@@ -6,3 +6,12 @@ def login_required(f):
         return f(*args, **kwargs)
 
     return decorated_function
+
+
+@app.route("/todo", methods=["POST", "GET"])
+@login_required
+def todo():
+    if request.method == "POST":
+        return redirect("/todo")
+    return render_template("todo.html")
+    
